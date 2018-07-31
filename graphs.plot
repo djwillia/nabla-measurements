@@ -40,27 +40,81 @@ set style fill solid 1 border lc rgb '#000000'
 set output 'graph-functions.png'
 set ylabel "Unique kernel functions accessed"
 plot \
+'results/zsummary-ftrace-runc.dat' using ($0-.2):6 with boxes notitle "docker" lc rgb "#d73027" fs pattern 1, \
+'results/zsummary-ftrace-runc.dat' using ($0-.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-ftrace-runc.dat' using ($0-.2):6 with boxes notitle "docker" lc rgb "#d73027" fs pattern 4, \
+'results/usummary-ftrace-runc.dat' using ($0-.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/isummary-ftrace-runc.dat' using ($0-.2):6 with boxes notitle "docker" lc rgb "#d73027" fs pattern 2, \
+'results/isummary-ftrace-runc.dat' using ($0-.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-ftrace-runc.dat' using ($0-.2):6 with boxes title "docker" lc rgb "#d73027", \
 'results/summary-ftrace-runc.dat' using ($0-.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/zsummary-ftrace-runsc.dat' using ($0-.1):6 with boxes notitle "gvisor" lc rgb "#fc8d59" fs pattern 1, \
+'results/zsummary-ftrace-runsc.dat' using ($0-.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-ftrace-runsc.dat' using ($0-.1):6 with boxes notitle "gvisor" lc rgb "#fc8d59" fs pattern 4, \
+'results/usummary-ftrace-runsc.dat' using ($0-.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/isummary-ftrace-runsc.dat' using ($0-.1):6 with boxes notitle "gvisor" lc rgb "#fc8d59" fs pattern 2, \
+'results/isummary-ftrace-runsc.dat' using ($0-.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-ftrace-runsc.dat' using ($0-.1):6 with boxes title "gvisor" lc rgb "#fc8d59", \
 'results/summary-ftrace-runsc.dat' using ($0-.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/zsummary-ftrace-runsck.dat' using ($0):6 with boxes notitle "gvisor-kvm" lc rgb "#fee090" fs pattern 1, \
+'results/zsummary-ftrace-runsck.dat' using ($0):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-ftrace-runsck.dat' using ($0):6 with boxes notitle "gvisor-kvm" lc rgb "#fee090" fs pattern 4, \
+'results/usummary-ftrace-runsck.dat' using ($0):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/isummary-ftrace-runsck.dat' using ($0):6 with boxes notitle "gvisor-kvm" lc rgb "#fee090" fs pattern 2, \
+'results/isummary-ftrace-runsck.dat' using ($0):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-ftrace-runsck.dat' using ($0):6 with boxes title "gvisor-kvm" lc rgb "#fee090", \
 'results/summary-ftrace-runsck.dat' using ($0):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/zsummary-ftrace-kata.dat' using ($0+.1):6 with boxes notitle "kata" lc rgb "#e0f3f8" fs pattern 1, \
+'results/zsummary-ftrace-kata.dat' using ($0+.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-ftrace-kata.dat' using ($0+.1):6 with boxes notitle "kata" lc rgb "#e0f3f8" fs pattern 4, \
+'results/usummary-ftrace-kata.dat' using ($0+.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/isummary-ftrace-kata.dat' using ($0+.1):6 with boxes notitle "kata" lc rgb "#e0f3f8" fs pattern 2, \
+'results/isummary-ftrace-kata.dat' using ($0+.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-ftrace-kata.dat' using ($0+.1):6 with boxes title "kata" lc rgb "#e0f3f8", \
 'results/summary-ftrace-kata.dat' using ($0+.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/zsummary-ftrace-runnc.dat' using ($0+.2):6 with boxes notitle "nabla" lc rgb "#91bfdb" fs pattern 1, \
+'results/zsummary-ftrace-runnc.dat' using ($0+.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-ftrace-runnc.dat' using ($0+.2):6 with boxes notitle "nabla" lc rgb "#91bfdb" fs pattern 4, \
+'results/usummary-ftrace-runnc.dat' using ($0+.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/isummary-ftrace-runnc.dat' using ($0+.2):6 with boxes notitle "nabla" lc rgb "#91bfdb" fs pattern 2, \
+'results/isummary-ftrace-runnc.dat' using ($0+.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-ftrace-runnc.dat' using ($0+.2):6 with boxes title "nabla" lc rgb "#91bfdb", \
 'results/summary-ftrace-runnc.dat' using ($0+.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle
 
 set output 'graph-syscalls.png'
 set ylabel "Unique syscalls accessed"
 plot \
+'results/usummary-syscalls-runc.dat' using ($0-.2):6 with boxes notitle "docker" lc rgb "#d73027" fs pattern 2, \
+'results/usummary-syscalls-runc.dat' using ($0-.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-syscalls-runc.dat' using ($0-.2):6 with boxes title "docker" lc rgb "#d73027", \
 'results/summary-syscalls-runc.dat' using ($0-.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-syscalls-runsc.dat' using ($0-.1):6 with boxes notitle "gvisor" lc rgb "#fc8d59" fs pattern 2, \
+'results/usummary-syscalls-runsc.dat' using ($0-.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-syscalls-runsc.dat' using ($0-.1):6 with boxes title "gvisor" lc rgb "#fc8d59", \
 'results/summary-syscalls-runsc.dat' using ($0-.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-syscalls-runsck.dat' using ($0):6 with boxes notitle "gvisor-kvm" lc rgb "#fee090" fs pattern 2, \
+'results/usummary-syscalls-runsck.dat' using ($0):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-syscalls-runsck.dat' using ($0):6 with boxes title "gvisor-kvm" lc rgb "#fee090", \
 'results/summary-syscalls-runsck.dat' using ($0):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-syscalls-kata.dat' using ($0+.1):6 with boxes notitle "kata" lc rgb "#e0f3f8" fs pattern 2, \
+'results/usummary-syscalls-kata.dat' using ($0+.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-syscalls-kata.dat' using ($0+.1):6 with boxes title "kata" lc rgb "#e0f3f8", \
 'results/summary-syscalls-kata.dat' using ($0+.1):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
+'results/usummary-syscalls-runnc.dat' using ($0+.2):6 with boxes notitle "nabla" lc rgb "#91bfdb" fs pattern 2, \
+'results/usummary-syscalls-runnc.dat' using ($0+.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle, \
 'results/summary-syscalls-runnc.dat' using ($0+.2):6 with boxes title "nabla" lc rgb "#91bfdb", \
 'results/summary-syscalls-runnc.dat' using ($0+.2):6:($6-$7):($6+$7) with errorbars ls 3 notitle
+
+set output 'graph-complexity.png'
+set ylabel "Sum of complexity metric"
+plot \
+'results/summary-complexity-list-runc.dat' using ($0-.2):($6+$11) with boxes title "docker" lc rgb "#d73027", \
+'results/summary-complexity-list-runc.dat' using ($0-.2):($6+$11):($6+$11-$7):($6+$11+$7) with errorbars ls 3 notitle, \
+'results/summary-complexity-list-runsc.dat' using ($0-.1):($6+$11) with boxes title "gvisor" lc rgb "#fc8d59", \
+'results/summary-complexity-list-runsc.dat' using ($0-.1):($6+$11):($6+$11-$7):($6+$11+$7) with errorbars ls 3 notitle, \
+'results/summary-complexity-list-runsck.dat' using ($0):($6+$11) with boxes title "gvisor-kvm" lc rgb "#fee090", \
+'results/summary-complexity-list-runsck.dat' using ($0):($6+$11):($6+$11-$7):($6+$11+$7) with errorbars ls 3 notitle, \
+'results/summary-complexity-list-kata.dat' using ($0+.1):($6+$11) with boxes title "kata" lc rgb "#e0f3f8", \
+'results/summary-complexity-list-kata.dat' using ($0+.1):($6+$11):($6+$11-$7):($6+$11+$7) with errorbars ls 3 notitle, \
+'results/summary-complexity-list-runnc.dat' using ($0+.2):($6+$11) with boxes title "nabla" lc rgb "#91bfdb", \
+'results/summary-complexity-list-runnc.dat' using ($0+.2):($6+$11):($6+$11-$7):($6+$11+$7) with errorbars ls 3 notitle
